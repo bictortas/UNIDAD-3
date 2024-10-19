@@ -1,67 +1,134 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-    //TAREA 4
-
-        //NUMERO DIVISIBLE ENTRE 3, 5 O AMBOS
-    Scanner intput = new Scanner(System.in);
-        System.out.println("Ingresa un numero: ");
-        int numeroUno = intput.nextInt();
-
-        if (numeroUno % 3 == 0 && numeroUno % 5 == 0) {
-            System.out.println("El numero es divisible entre 3 y 5" + "\n");
-        } else if (numeroUno % 3 == 0) {
-            System.out.println("El numero es divisible entre 3" + "\n");
-        } else if ( numeroUno % 5 == 0) {
-            System.out.println("El numero es divisible entre 5" + "\n");
-        }else {
-            System.out.println("El numero no es divisible entre ninguno" + "\n");
-        }
+    //TAREA 5- EMPLEO
+        Scanner sc = new Scanner(System.in);
+        System.out.println("EJERCICIO 1: " + "\n");
 
 
-        //LADOS DE UN TRIANGULO
-        System.out.println("Ingresa el primer lado del traingulo: ");
-        int ladoUno = intput.nextInt();
-        System.out.println("Ingresa el segundo lado del traingulo: ");
-        int ladoDos = intput.nextInt();
-        System.out.println("Ingresa el tercer lado del traingulo: ");
-        int ladoTres = intput.nextInt();
 
-        boolean isoceles = ((ladoUno == ladoDos || ladoUno == ladoTres || ladoDos == ladoTres) && ( ladoUno != ladoTres || ladoDos != ladoTres));
-        boolean equilatero = (ladoUno == ladoDos || ladoUno == ladoTres || ladoDos == ladoTres);
+        System.out.println("Eres Ciudadano o Residente?");
+        String tipoCandidato = sc.nextLine();
 
-        if (isoceles) {
-            System.out.println("El triangulo es isoceles"+ "\n");
-        } else if (equilatero) {
-            System.out.println("El triangulo es equilatero"+ "\n");
+        if (tipoCandidato.equals("Ciudadano") || tipoCandidato.equals("Residente")) {
+            System.out.println("Elegible para cualquier puesto");
         } else {
-            System.out.println("El triangulo es escaleno"+ "\n");
+            System.out.println("Visa :");
+            String visaValida = sc.nextLine();
+            if(visaValida.equals("Valida")){
+
+                System.out.println("Cuantos anios de expieriencia tienes?");
+                int experiencia = sc.nextInt();
+                if(experiencia >= 5){
+                    System.out.println("Elegible para un empleo calificado");
+                } else if (experiencia < 5) {
+                    System.out.println("Elegible para un empleo no calificado");
+                }
+            }else{
+                System.out.println("Visa invalida, Candidato rexhazado");
+            }
+
         }
 
-        //SALARIO DE UN CLIENTE
-        System.out.println("Ingresa tu salario: " + "\n");
-        int salario = intput.nextInt();
 
-        if (salario <= 10000){
-            System.out.println("No pagas impuestos");
-        } else if (salario >= 10001 && salario <= 20000) {
-            double inpuestoUno = salario * 0.10;
-            System.out.println("Pagaras impuesto del 10%, es decir :" + "$" +inpuestoUno + "\n");
-        } else if (salario >= 20000) {
-            double inpuestoDos = salario * 0.20;
-            System.out.println("Pagaras impuesto del 20%, es decir: " + "$" + inpuestoDos + "\n");
+
+
+    //IDENTIDAD
+        System.out.println("EJERCICIO 2: " + "\n");
+
+
+        System.out.println("Ingresa tu pais de recidencia: ");
+        String paisResidencia = sc.nextLine();
+        if (paisResidencia.equals("USA")){
+            System.out.println("Ingresa tu codigo postal: ");
+            String codigoPostal = sc.nextLine();
+
+            if(codigoPostal.charAt(0) == '9'){
+                System.out.println("Has hecho compras previas?");
+                String comprasPrevias = sc.nextLine();
+
+                if(comprasPrevias.equals("Si")){
+                    System.out.println("Ha hecho compras previas, puede pagar con PayPal");
+                }else{
+                    System.out.println("Se le pide realizar una verificación con su dirección.");
+                }
+            }else {
+                System.out.println("Utiliza tarjeta de credito");
+            }
+
+        } else if (paisResidencia.equals("Europa")) {
+            System.out.println("Ingresa tu codigo postal: ");
+            String codigoPostal = sc.nextLine();
+
+            if(codigoPostal.length() == 5){
+                System.out.println("Has hecho compras previas?");
+                String comprasPrevias = sc.nextLine();
+
+                if(comprasPrevias.equals("Si")){
+                    System.out.println("Ha hecho compras previas, puede pagar con transferencia bancaria");
+                }else{
+                    System.out.println("Se le pide realizar una verificación bancaria.");
+                }
+            }else {
+                System.out.println("Codigo postal invalido,su compra no puede ser realizada");
+            }
+
+        }else{
+            System.out.println("Pais invalido,se le pide una verificación manual de identidad.");
+
         }
 
-       //PAR O IMPAR
-        System.out.println("Ingresa otro numero: ");
-        int numero2 = intput.nextInt();
 
-        if (numero2 % 2 == 0){
-            System.out.println("Es par");
-        }else {
-            System.out.println("Es impar");
+
+        System.out.println("EJERCICIO 3: " + "\n");
+
+        boolean suiteDisponible = false;
+
+        System.out.println("Ingrese la cantidad de personas: ");
+        int cantidad = sc.nextInt();
+        sc.nextLine();
+
+        if (cantidad == 1){
+
+            System.out.println("Ingrese el tipo de habitacion que desea: ");
+            String preferencia = sc.nextLine();
+
+            if(preferencia.equals("Suite")){
+                System.out.println("Duracion de estadia: ");
+                int duracion = sc.nextInt();
+                if(suiteDisponible == true && duracion > 3){
+                    System.out.println("Hay Suite disponibles, Se le ofrece un descuento del 10%");
+                } else if (suiteDisponible == false || duracion <= 3) {
+                    System.out.println("Se ofrece una habitacion estandar");
+                }
+
+            } else if (preferencia.equals("Estandar")) {
+                System.out.println("Se le asigna una habitación estándar sin verificaciones.");
+            }
+
+        } else if (cantidad >= 2){
+            System.out.println("Ingrese el tipo de habitacion que desea: ");
+            String preferencia = sc.nextLine();
+
+            if(preferencia.equals("Suite") && suiteDisponible == true){
+                System.out.println("Duracion de estadia: ");
+                int duracion = sc.nextInt();
+                if(duracion > 5){
+                    System.out.println("Se ofrece un paquete con desayuno incluido.");
+                } else if (duracion <= 5) {
+                    System.out.println("Solo la suite sin paquete.");
+                }
+
+            } else if (preferencia.equals("Estandar") || suiteDisponible == false) {
+                System.out.println("Se le asigna una habitación doble estándar.");
+            }
+
         }
+
+
+
+
     }
 }
