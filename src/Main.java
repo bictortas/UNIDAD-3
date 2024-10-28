@@ -2,66 +2,180 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("EJERCICIO 1");
+        //Imprimir números del 1 al 10
 
-    //TAREA 4
+        int numero = 1;
 
-        //NUMERO DIVISIBLE ENTRE 3, 5 O AMBOS
-    Scanner intput = new Scanner(System.in);
-        System.out.println("Ingresa un numero: ");
-        int numeroUno = intput.nextInt();
+        while (numero <= 10) {
+            System.out.println(numero);
+            numero++;
+        }
+        //Suma de los primeros 10 números naturales:
+        System.out.println("EJERCICIO 2");
+        int suma = 0;
+        int numeroDos = 1;
+        while (numeroDos <= 10) {
+            suma += numeroDos;
+            numeroDos++;
+        }
+        System.out.println("El resultado de sumar los primeros 10 numeros naturales es: " + suma);
+        //Contar dígitos de un número:
+        System.out.println("EJERCICIO 3");
 
-        if (numeroUno % 3 == 0 && numeroUno % 5 == 0) {
-            System.out.println("El numero es divisible entre 3 y 5" + "\n");
-        } else if (numeroUno % 3 == 0) {
-            System.out.println("El numero es divisible entre 3" + "\n");
-        } else if ( numeroUno % 5 == 0) {
-            System.out.println("El numero es divisible entre 5" + "\n");
-        }else {
-            System.out.println("El numero no es divisible entre ninguno" + "\n");
+        int numeroTres = 4567;
+        int contador = 0;
+        while (numeroTres != 0) {
+            numeroTres /= 10;
+            contador++;
         }
 
+        System.out.println("El número tiene " + contador + " dígitos.");
 
-        //LADOS DE UN TRIANGULO
-        System.out.println("Ingresa el primer lado del traingulo: ");
-        int ladoUno = intput.nextInt();
-        System.out.println("Ingresa el segundo lado del traingulo: ");
-        int ladoDos = intput.nextInt();
-        System.out.println("Ingresa el tercer lado del traingulo: ");
-        int ladoTres = intput.nextInt();
-
-        boolean isoceles = ((ladoUno == ladoDos || ladoUno == ladoTres || ladoDos == ladoTres) && ( ladoUno != ladoTres || ladoDos != ladoTres));
-        boolean equilatero = (ladoUno == ladoDos || ladoUno == ladoTres || ladoDos == ladoTres);
-
-        if (isoceles) {
-            System.out.println("El triangulo es isoceles"+ "\n");
-        } else if (equilatero) {
-            System.out.println("El triangulo es equilatero"+ "\n");
-        } else {
-            System.out.println("El triangulo es escaleno"+ "\n");
+        //Imprimir números pares entre 1 y 20
+        System.out.println("EJERCICIO 4 ");
+        int numeroCuatro = 1;
+        while (numeroCuatro <= 20) {
+            numeroCuatro++;
+            if (numeroCuatro % 2 == 0) {
+                System.out.println(numeroCuatro);
+            }
         }
 
-        //SALARIO DE UN CLIENTE
-        System.out.println("Ingresa tu salario: " + "\n");
-        int salario = intput.nextInt();
-
-        if (salario <= 10000){
-            System.out.println("No pagas impuestos");
-        } else if (salario >= 10001 && salario <= 20000) {
-            double inpuestoUno = salario * 0.10;
-            System.out.println("Pagaras impuesto del 10%, es decir :" + "$" +inpuestoUno + "\n");
-        } else if (salario >= 20000) {
-            double inpuestoDos = salario * 0.20;
-            System.out.println("Pagaras impuesto del 20%, es decir: " + "$" + inpuestoDos + "\n");
+        //Sumar dígitos de un número:
+        System.out.println("EJERCICIO 5");
+        int numeroCinco = 4567;
+        int sumaDos = 0;
+        while (numeroCinco != 0) {
+            sumaDos = sumaDos + numeroCinco % 10;
+            numeroCinco /= 10;
         }
+        System.out.println("La suma de los numeros es: " + sumaDos);
 
-       //PAR O IMPAR
-        System.out.println("Ingresa otro numero: ");
-        int numero2 = intput.nextInt();
+        System.out.println("EJERCICIO 6");
+        //Múltiplos de un número hasta cierto límite
+        int numeroMultiplo = 5;
+        int multiploCont = 1;
+        int limite = 25;
 
-        if (numero2 % 2 == 0){
-            System.out.println("Es par");
-        }else {
-            System.out.println("Es impar");
+            while ((numeroMultiplo * multiploCont) <= limite) {
+                String texto = numeroMultiplo + "x" + multiploCont + "=";
+                int multiplicacion = numeroMultiplo * multiploCont;
+                System.out.println(texto + multiplicacion);
+                multiploCont++;
+            }
+
+
+        //Suma de dígitos pares de un número
+        System.out.println("EJERCICIO 7");
+        int numeroSiete = 4567;
+        int sumaPar = 0;
+
+            while (numeroSiete != 0) {
+                 int par = numeroSiete % 10;
+                if (par % 2 == 0) {
+                    sumaPar += par;
+                }
+                numeroSiete /= 10;
+            }
+        System.out.println("La suma de los numeros pares es:" + sumaPar);
+
+        //Imprimir números en orden inverso:
+        System.out.println("EJERCICIO 8");
+
+        int numeroOcho = 4567;
+        int numeroInvertido = 0;
+
+        while (numeroOcho != 0) {
+             int digito = numeroOcho % 10;
+             numeroInvertido = (numeroInvertido * 10) + digito;
+             numeroOcho /= 10;
         }
+        System.out.println("Numero invertido: "+numeroInvertido);
+
+        //Suma de dígitos impares de un número
+        System.out.println("EJERCICIO 9");
+        int numeroNueve = 4567;
+        int sumaImpar = 0;
+
+        while (numeroNueve != 0) {
+            int impar = numeroNueve % 10;
+            if (impar % 2 == 0) {
+
+            }else{
+                sumaImpar += impar;
+            }
+            numeroNueve /= 10;
+        }
+        System.out.println("La suma de los numeros Impares es:" + sumaImpar);
+
+        //Contar vocales de una cadena:
+        System.out.println("EJERCICIO 10");
+
+        String palabra = "palabra";
+        int contadorPalabra = 0;
+        int indice = 0;
+
+        while (indice < palabra.length()){
+            char letra = palabra.charAt(indice);
+            if(letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o'){
+                contadorPalabra++;
+            }
+            indice++;
+        }
+        System.out.println("La cantidad de vocales en la palabra palabra es: " + contadorPalabra);
+
+        //Determinar si un número es perfecto
+        System.out.println("EJERCICIO 11");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Ingrese un numero: ");
+        int numeroUsuario = sc.nextInt();
+        int divisorCont = 1;
+        int sumaDivisores = 0;
+
+        while (divisorCont <= numeroUsuario / 2) {
+            if(numeroUsuario % divisorCont == 0){
+                sumaDivisores += divisorCont;
+            }
+            divisorCont++;
+        }
+            if(sumaDivisores == numeroUsuario){
+                System.out.println("Es un numero perfecto");
+            }else{
+                System.out.println("No es un numero perfecto");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
